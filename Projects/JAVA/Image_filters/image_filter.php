@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+        <title>Image_Filter</title>
+    </head>
+    <body>
+       
+        <img src="sample.jpg" height="300" id="image"><br>
+<label>Blur</label> 
+    <input type="range" min="0" max="10" value="0" step="1" onchange="applyFilter()" data-filter="blur" data-scale="px"><br>
+<label>Brightness</label>
+    <input type="range" min="0" max="200" value="100" step="1" onchange="applyFilter()" data-filter="brightness" data-scale="%"><br>
+<label>Contrast</label>
+    <input type="range" min="0" max="200" value="100" step="1" onchange="applyFilter()" data-filter="contrast" data-scale="%"><br>
+<label>Grayscale</label>
+    <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="grayscale" data-scale="%"><br>
+<label>Hue Rotate</label>
+    <input type="range" min="0" max="360" value="0" step="1" onchange="applyFilter()" data-filter="hue-rotate" data-scale="deg"><br>
+<label>Invert</label>
+    <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="invert" data-scale="%"><br>
+<label>Opacity</label>
+    <input type="range" min="0" max="100" value="100" step="1" onchange="applyFilter()" data-filter="opacity" data-scale="%"><br>
+<label>Saturation</label>
+    <input type="range" min="1" max="100" value="1" step="1" onchange="applyFilter()" data-filter="saturate" data-scale=""><br>
+<label>Sepia</label>
+    <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="sepia" data-scale="%">
+
+
+
+
+                <script type="text/javascript">
+        var image = document.querySelector('img');
+		var filterControls = document.querySelectorAll('input[type=range]');
+		function applyFilter() {
+			var computedFilters = '';
+			filterControls.forEach(function(item, index) {
+				computedFilters += item.getAttribute('data-filter') + '(' + item.value + item.getAttribute('data-scale') + ') ';
+			});
+			image.style.filter = computedFilters;
+		};
+          </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Password Strenght</title>
+    </head>
+<body>
+    <script src="jquery.min.js"></script>
+    <h1>Password Strenght</h1>
+    <label>Enter Password: </label>
+    <input type="text" autocomplete="none" id="password">
+    <progress max="100" value="0" id="strenght" style="width:230 px;"></progress>
+</body>    
+<script type="text/javascript">
+    var pass = document.getElementById("password")
+    pass.addEventListener('Keyip', function() {
+        checkPassword(pass.value)
+    })
+    function.checkPassword(password) {
+        var strenghtBar = document.getElementById("strengtht")
+        var strenght = 0;
+        if (password.match(/ [a-zA-Z0-9] + /)) {
+            strenght += 1
+        }
+        if (password.match(/ [<>?] + /)) {
+            strenght += 1
+        }
+        if (password.match(/ [!@#$%^&*()] + /)) {
+            strenght += 1
+        }
+        if (password.lenght > 5) {
+            strenght += 1
+        }
+        switch(strenght) {
+            case 0: 
+            strenghtBar.value = 20;
+            break
+            case 1: 
+            strenghtBar.value = 40;
+            break
+            case 2: 
+            strenghtBar.value = 60;
+            break
+            case 3: 
+            strenghtBar.value = 80;
+            break
+            case 4: 
+            strenghtBar.value = 100;
+            break
+        }
+    }
+</script>
+</html>
